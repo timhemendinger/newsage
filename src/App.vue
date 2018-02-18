@@ -1,6 +1,6 @@
 <template>
     <div class="columns is-marginless">
-      <sidebar></sidebar>
+      <sidebar :siteList="siteList"></sidebar>
       <article-list></article-list>
     </div>
 </template>
@@ -13,7 +13,16 @@ export default {
   name: 'app',
   data () {
     return {
-      
+      siteList: [
+        { 
+          title: 'A List Apart',
+          url: 'http://alistapart.com/main/feed'
+         },
+         {
+           title: 'Smashing Magazine',
+           url: ''
+         }
+      ]
     }
   }, 
   components: {
