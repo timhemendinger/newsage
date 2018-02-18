@@ -1,16 +1,15 @@
 <template>
 
-  <aside class="column is-3 hero is-fullheight menu">
-
-      <div v-for="item in items" class="card">
+  <div class="column is-3">
+      
+      <div v-for="(item, index) in items" class="card" @click="newArticleSelected(index)">
             <div class="card-content">
                 <div class="content">
-                    <strong>{{ item }}</strong>
+                    {{ item.title }}
                 </div>
             </div>
         </div>
-            
-  </aside>
+  </div>
 
 </template>
 
@@ -24,18 +23,26 @@ export default {
             items: null
         }
     },
-
+    methods: {
+        newArticleSelected(index) {
+            eventBus.$emit('newArticleSelected', this.items[index].content);
+        }
+    },
     created() {
-        
         eventBus.$on('newLinkSelected', (data) => {
             this.items = data;
         });
-
     }
 }
 </script>
 
 
 <style scoped>
+    .card {
+        cursor: pointer;
+    }
 
+    .card:hover {
+        background-color: #eee;
+    }
 </style>

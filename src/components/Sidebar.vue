@@ -23,6 +23,10 @@ export default {
   },
   methods: {
     retrieveRSSData(url) {
+
+        // Clear items array
+        this.items = [];
+
         var parseString = 'https://cors.now.sh/' + url;
 
         let parser = new Parser();
@@ -31,7 +35,11 @@ export default {
             let feed = await parser.parseURL(parseString);
 
             feed.items.forEach(item => {
-                this.items.push(item.title)
+                //console.log(item);
+                this.items.push({
+                    'title': item.title,
+                    'content': item.content
+                })
             });
 
             eventBus.$emit('newLinkSelected', this.items);

@@ -2,12 +2,14 @@
     <div class="columns is-marginless">
       <sidebar :siteList="siteList"></sidebar>
       <article-list></article-list>
+      <article-content></article-content>
     </div>
 </template>
 
 <script>
 import Sidebar from './components/Sidebar.vue';
 import ArticleList from './components/ArticleList.vue';
+import ArticleContent from './components/ArticleContent.vue';
 
 export default {
   name: 'app',
@@ -20,14 +22,15 @@ export default {
          },
          {
            title: 'Smashing Magazine',
-           url: ''
+           url: 'http://rss1.smashingmagazine.com/feed/'
          }
       ]
     }
   }, 
   components: {
     sidebar: Sidebar,
-    articleList: ArticleList
+    articleList: ArticleList,
+    articleContent: ArticleContent
   }
 }
 </script>
